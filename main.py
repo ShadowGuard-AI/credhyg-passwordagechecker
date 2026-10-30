@@ -129,6 +129,9 @@ def main():
 
     if expired_passwords > 0:
         logging.info(f"Found {expired_passwords} passwords exceeding the maximum age.")
+        # Expired passwords are the finding this tool exists for; a
+        # scheduler or script wrapping it reads the exit code.
+        sys.exit(1)
     else:
         logging.info("No passwords exceeding the maximum age found.")
 
