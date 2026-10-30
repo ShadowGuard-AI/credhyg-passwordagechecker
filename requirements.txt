@@ -1,2 +1,3 @@
-python-dotenv>=1.0.0
-requests>=1.0.0
+# Nothing to install: main.py uses only the standard library
+# (argparse, csv, datetime, logging, os, sys). python-dotenv
+# and requests stood here before and are never imported.

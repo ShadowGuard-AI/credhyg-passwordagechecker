@@ -17,7 +17,10 @@ def setup_argparse():
     parser = argparse.ArgumentParser(description="Checks the age of passwords in a CSV file and alerts if any exceed a specified threshold.")
     parser.add_argument("file_path", help="Path to the CSV file containing password data (format: name,username,password,url,creation_date)")
     parser.add_argument("--max_age", type=int, default=90, help="Maximum password age in days before an alert is triggered (default: 90)")
-    parser.add_argument("--date_format", type=str, default="%Y-%m-%d", help="Date format in the CSV file (default: %Y-%m-%d)")
+    # The percent signs are doubled because argparse runs help text
+    # through percent formatting: a single %Y here crashed --help
+    # itself with "unsupported format character 'Y'".
+    parser.add_argument("--date_format", type=str, default="%Y-%m-%d", help="Date format in the CSV file (default: %%Y-%%m-%%d)")
     parser.add_argument("--log_level", type=str, default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"], help="Set the logging level (default: INFO)")
     return parser
 
@@ -52,11 +55,20 @@ def process_password_file(file_path, max_age, date_format):
     try:
         with open(file_path, 'r', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
-            next(reader, None)  # Skip the header row if it exists
 
             for row in reader:
-                if len(row) < 5:
-                    logging.warning(f"Skipping row due to insufficient data: {row}")
+                # Skip the header row only when it is the header. The
+                # old code skipped the first row unconditionally, so
+                # a file without a header silently lost its first
+                # password, which is often the oldest one.
+                if [cell.strip().lower() for cell in row] == [
+                    "name", "username", "password", "url", "creation_date",
+                ]:
+                    continue
+                if len(row) != 5:
+                    # A wide row used to raise on unpacking outside
+                    # the per-row guard and end the whole run.
+                    logging.warning(f"Skipping row with {len(row)} fields (expected 5): {row}")
                     continue
 
                 name, username, password, url, creation_date_str = row
