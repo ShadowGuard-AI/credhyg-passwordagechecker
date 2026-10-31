@@ -56,7 +56,7 @@ def process_password_file(file_path, max_age, date_format):
         with open(file_path, 'r', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
 
-            for row in reader:
+            for row_number, row in enumerate(reader, 1):
                 # Skip the header row only when it is the header. The
                 # old code skipped the first row unconditionally, so
                 # a file without a header silently lost its first
@@ -67,8 +67,13 @@ def process_password_file(file_path, max_age, date_format):
                     continue
                 if len(row) != 5:
                     # A wide row used to raise on unpacking outside
-                    # the per-row guard and end the whole run.
-                    logging.warning(f"Skipping row with {len(row)} fields (expected 5): {row}")
+                    # the per-row guard and end the whole run. The
+                    # warning names the row number and username only:
+                    # printing the whole row put the password in the
+                    # log, which the age alert at the bottom of this
+                    # loop already takes care not to do.
+                    username = row[1] if len(row) > 1 else "unknown"
+                    logging.warning(f"Skipping row {row_number} with {len(row)} fields (expected 5) for username: {username}")
                     continue
 
                 name, username, password, url, creation_date_str = row
@@ -82,7 +87,7 @@ def process_password_file(file_path, max_age, date_format):
                         expired_count += 1
 
                 except ValueError as e:
-                    logging.error(f"Invalid date format or value in row: {row}. Error: {e}")
+                    logging.error(f"Invalid date format or value in row {row_number} for {name} (username: {username}). Error: {e}")
 
     except FileNotFoundError:
         logging.error(f"File not found: {file_path}")
