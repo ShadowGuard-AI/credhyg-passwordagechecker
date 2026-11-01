@@ -61,6 +61,9 @@ def process_password_file(file_path, max_age, date_format):
                 # old code skipped the first row unconditionally, so
                 # a file without a header silently lost its first
                 # password, which is often the oldest one.
+                # I recognise the header only in its exact five name form.
+                # A file whose header renames one column is treated as data,
+                # and its header row then fails the date parse below.
                 if [cell.strip().lower() for cell in row] == [
                     "name", "username", "password", "url", "creation_date",
                 ]:
@@ -80,12 +83,18 @@ def process_password_file(file_path, max_age, date_format):
 
                 try:
                     creation_date = datetime.datetime.strptime(creation_date_str, date_format).date()
+                    # I age against the local date on the machine running this.
+                    # The same file checked just after midnight in another time
+                    # zone can gain a day, which matters only at the boundary.
                     age = (datetime.date.today() - creation_date).days
 
                     if age > max_age:
                         logging.warning(f"Password for {name} (username: {username}, URL: {url}) is {age} days old, exceeding the maximum age of {max_age} days.")
                         expired_count += 1
 
+                # A row whose date will not parse is logged and skipped here.
+                # It is not counted as expired and not counted as fine either,
+                # so the final count can understate a messy file.
                 except ValueError as e:
                     logging.error(f"Invalid date format or value in row {row_number} for {name} (username: {username}). Error: {e}")
 
