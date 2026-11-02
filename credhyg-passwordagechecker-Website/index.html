@@ -1,164 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Credhyg Passwordagechecker: what it is, how it runs, where it stops</title>
-<meta name="description" content="Credhyg Passwordagechecker is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.">
-<style>
-:root {
-  --bg: #241a10; --panel: #362818; --ink: #f4ead2;
-  --mut: #483620;
-  --acc: #eeba5c; --acc2: #96b296;
-  --line: #362818;
-}
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink);
-  font-family: ' Gill Sans', 'Segoe UI', sans-serif; line-height: 1.55; }
-code, pre, .mono { font-family: 'SF Mono', monospace; }
-a { color: var(--acc2); }
-.hero { padding: 3rem 6vw 1rem; }
-.hero img.banner { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; }
-.logo { width: 92px; height: 92px; border-radius: 18px;
-  border: 1px solid var(--line); }
-h1 { font-size: 2.4rem; margin: 0.4em 0 0.1em; }
-h2 { border-bottom: 2px solid var(--acc); padding-bottom: 0.2em;
-  margin-top: 2em; }
-.lede { font-size: 1.15rem; max-width: 62ch; }
-main { padding: 0 6vw 3rem; max-width: 1180px; margin: 0 auto; }
-.grid { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-.card { background: var(--panel); border: 1px solid var(--line);
-  border-radius: 12px; padding: 1rem 1.2rem; }
-.card.pop { animation: rise 0.7s ease both; }
-@keyframes rise { from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; } }
-pre.code { background: #101014; color: #e8e6df; padding: 1rem 1.2rem;
-  border-radius: 12px; overflow-x: auto; font-size: 0.86rem;
-  border-left: 5px solid var(--acc); }
-table { border-collapse: collapse; width: 100%; }
-td, th { border-bottom: 1px solid var(--line); padding: 0.45rem 0.6rem;
-  text-align: left; }
-.shots { display: grid; gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.shots img { width: 100%; height: auto; border: 1px solid var(--line);
-  border-radius: 10px; background: #f4f1e8; }
-footer { padding: 2rem 6vw; border-top: 1px solid var(--line);
-  color: var(--mut); }
-.rail { display: flex; gap: 1.2rem; align-items: flex-start; }
-.rail nav { position: sticky; top: 1rem; min-width: 180px; }
-@media (max-width: 760px) { .rail { flex-direction: column; }
-  .rail nav { position: static; } }
-@media (prefers-reduced-motion: reduce) {
-  .card.pop { animation: none; } * { scroll-behavior: auto; } }
-</style>
-</head>
-<body class="layout-ledger">
-<!-- This page exists for credhyg-passwordagechecker alone: the layout (ledger),
-     the colors, and the type were picked for this project, not
-     shared with the other project pages. The code block below is
-     copied from the file it names, line for line. If it looks
-     plain, that is because the project is plain, and I would
-     rather the page match the project than dress it up. The one
-     thing I will not do here is oversell: what this project does
-     not do is stated on the page, not hidden from it. -->
-<header class="hero">
-  <img class="logo" src="assets/logo.png" alt="Credhyg Passwordagechecker logo">
-  <img class="banner" src="assets/banner.png" alt="">
-  <h1>Credhyg Passwordagechecker</h1>
-  <p class="mono"><a href="https://github.com/ShadowGuard-AI/credhyg-passwordagechecker">github.com/ShadowGuard-AI/credhyg-passwordagechecker</a></p>
-</header>
+<html lang="en-GB"><head><meta charset="utf-8"><title>credhyg-PasswordAgeChecker: Mangrove Nursery at Low Tide</title>
+<style>@font-face{font-family:'Disp';src:url('fonts/BungeeShade.ttf')}@font-face{font-family:'Text';src:url('fonts/AlegreyaSans.ttf')}
+body{background:#6B7A74;color:#26362F;font-family:'Text',sans-serif;margin:0;padding:24px}
+h1,h2{font-family:'Disp',sans-serif} .card{background:#E8E3C8;padding:18px;margin:16px auto;max-width:860px;border-radius:6px}
+button{background:#2E7D5B;color:#fff;border:2px solid #26362F;padding:10px 14px;margin:4px;font-family:'Disp',sans-serif;cursor:pointer}
+button:hover{filter:brightness(1.15)} button:active{transform:translateY(2px)}
+pre.live{background:#E8E3C8;padding:18px;max-width:860px;margin:16px auto;white-space:pre-wrap}
+img{max-width:860px;width:100%;display:block;margin:12px auto}</style></head>
+<body><img src="intro-banner.png" alt="The mangrove shore before any name is given: mud patterned with crab holes, one root arch over a shallow pool holding small fish, ranks of arches behind, leaf litter at the tideline, and canopy light in broken shafts, with the tide board turned away and no lettering anywhere">
+<h1 style="text-align:center;color:#fff">credhyg-PasswordAgeChecker</h1>
+<p style="text-align:center;color:#fff">Mangrove Nursery at Low Tide</p>
+<img src="banner.png" alt="The mangrove stand at low tide across the full width: a foreground root arch with a lotus pink crab and fish in the pool behind it, ranks of arches and leaf litter drifts and fallen propagators in the middle distance, canopy in broken light behind, and the name painted on a weathered tide board nailed to the nearest trunk">
+<div style="text-align:center"><button type='button'>Read the Export</button> <button type='button'>Set the Greatest Permitted Age</button> <button type='button'>Set the Date Pattern</button> <button type='button'>Choose the Logging Level</button> <button type='button'>Show Help</button></div>
+<section class='card'><h2>What the Tide Brings In</h2><p>The tool reads a comma separated export whose rows carry five fields in the order name, username, password, url, and creation date. For each row it can read it works out how many days have passed between that creation date and the local date on the machine that runs it, and logs a warning naming the account, the username, and the url whenever that age is greater than the permitted maximum. At no point, in any warning, in any error, or in any summary, does it print the password value itself.</p></section>
+<section class='card'><h2>What Is Left on the Mud</h2><p>A header row is recognised and skipped only when its five cells, stripped and lowered, match the five field names exactly. A row with any number of fields other than five is skipped with a warning that names the row number and, where the row is long enough to have one, the username, and never the whole row. A row whose date will not parse under the chosen format is logged as an error naming the row number, the account, and the username, is skipped, and is counted neither as expired nor as sound.</p></section>
+<section class='card'><h2>The Value Is Never Shown</h2><p>This caution has a panel of its own. The code holds the password value in a variable only in order to unpack its row and never sends it to the log. Anyone handing this tool a real export can rely on that restraint.</p></section>
+<section class='card'><h2>Giving and Running</h2><p>Install line as printed in the README, wrong organisation and all: git clone https://github.com/ShadowStrikeHQ/credhyg-passwordagechecker . Note: the install line names ShadowStrikeHQ, which is not the organisation that holds this repository; the line is shown as printed and flagged here, not corrected inside it. The running form the parser accepts is python3 main.py FILE, with the file path supplied as the first and only positional argument, which is required.</p></section>
+<section class='card'><h2>How Long Before the Mark</h2><p>Controls in parser order. The help control, shown as -h, prints the help message and leaves. The file path is the path to the comma separated file and it is required. --max_age sets the greatest permitted age in days, must be a positive whole number, and defaults to 90. --date_format gives the pattern by which creation dates are read and defaults to the year month day pattern; a format that cannot be proved against a known date stops the run before any file is touched. --log_level chooses among DEBUG, INFO, WARNING, ERROR, and CRITICAL, and defaults to INFO.</p></section>
+<section class='card'><h2>How the Count Comes Out</h2><p>Where no row exceeds the permitted age the run finishes normally after logging that none was found. Where one or more rows do exceed it the run logs how many were found and then exits with status 1. Where the file cannot be found, where the reading of it fails, where the maximum age is not a positive whole number, or where the date format is shown to be invalid, the run likewise exits with status 1. The page keeps those two kinds of exit apart in its wording, the one being a report and the other being a failure, even though the number returned is the same.</p></section>
+<section class='card'><h2>Licence</h2><p>The README offers only a copyright line in the wrong name, preserved verbatim below. The separate LICENSE file in the repository carries the MIT License, with a holder line that carries the owner legal surname, a fact recorded here without that surname being reproduced.</p></section>
+<img src="scene.svg" alt="The shore in three bands: still canopy with light travelling slowly, channel water rising and falling in stages while fish shift in their pool and crabs move sideways with pauses, and leaf litter turning once in an eddy and resting against a root">
+<h2 style="text-align:center;color:#fff">Preserved README text, verbatim</h2>
+<pre class='live'>
+![Banner](banner.png)
 
-<main>
-  <section class="rail">
-    <nav aria-label="on this page">
-      <p class="mono"><a href="#run">Run it</a><br>
-      <a href="#files">The files</a><br>
-      <a href="#sheets">The sheets</a><br>
-      <a href="https://github.com/ShadowGuard-AI/credhyg-passwordagechecker">The repo</a></p>
-    </nav>
-    <div>
-      <p class="lede">Credhyg Passwordagechecker is one of my projects. The README in the repo is short, so this page sticks to what the files themselves show.</p>
-      <div class="grid">
-        <div class="card pop"><h3>What it is</h3>
-          <p>Credhyg Passwordagechecker: 3 files, 156 counted
-          lines across Python 137, Markdown 17, Text 2. One job, done in the
-          open, in files you can read.</p></div>
-        <div class="card pop"><h3>The biggest piece</h3>
-          <p><code>main.py</code> carries the most
-          lines. If the project grows, that file is where the growth
-          lands first, for better or worse.</p></div>
-        <div class="card pop"><h3>The honest gap</h3>
-          <p>No test files yet. That is the honest gap, and the roadmap in the visuals folder says what the first one should cover.</p></div>
-      </div>
-      <section id="run">
-        <h2>Run it</h2>
-        <p>The repo README has the exact commands for this one. The
-        shape is the shape for most of my projects: clone it, read the
-        top file first so you know what will happen, then run it on
-        something you do not mind breaking.</p>
-        <p class="mono">$ git clone https://github.com/ShadowGuard-AI/credhyg-passwordagechecker.git<br>$ cd credhyg-passwordagechecker</p>
-      </section>
-      
-  <section aria-label="real code">
-    <h2>The code, as it sits in the repo</h2>
-    <p>From <code>main.py</code>, line 11 on. I did
-    not tidy it for the page. What you see is what the file has.</p>
-    <pre class="code"><code>logging.basicConfig(level=logging.INFO, format=&#x27;%(asctime)s - %(levelname)s - %(message)s&#x27;)
+# credhyg-PasswordAgeChecker
+A command-line tool that checks the age of passwords stored in a specified file (e.g., a KeePass database export). It alerts the user if any password exceeds a configurable age threshold, encouraging password rotation. Alerts and error messages name the account, username, and row number only: a password value is never printed, including for malformed rows and rows with a bad date. - Focused on Tools for identifying and remediating credential leaks, insecure storage, and weak password policies. Checks for exposed API keys, default passwords, and password strength.
 
-def setup_argparse():
-    &quot;&quot;&quot;
-    Sets up the argument parser for the command-line interface.
-    &quot;&quot;&quot;
-    parser = argparse.ArgumentParser(description=&quot;Checks the age of passwords in a CSV file and alerts if any exceed a specified threshold.&quot;)
-    parser.add_argument(&quot;file_path&quot;, help=&quot;Path to the CSV file containing password data (format: name,username,password,url,creation_date)&quot;)
-    parser.add_argument(&quot;--max_age&quot;, type=int, default=90, help=&quot;Maximum password age in days before an alert is triggered (default: 90)&quot;)
-    parser.add_argument(&quot;--date_format&quot;, type=str, default=&quot;%Y-%m-%d&quot;, help=&quot;Date format in the CSV file (default: %Y-%m-%d)&quot;)
-    parser.add_argument(&quot;--log_level&quot;, type=str, default=&quot;INFO&quot;, choices=[&quot;DEBUG&quot;, &quot;INFO&quot;, &quot;WARNING&quot;, &quot;ERROR&quot;, &quot;CRITICAL&quot;], help=&quot;Set the logging level (default: INFO)&quot;)
-    return parser
+## Install
+`git clone https://github.com/ShadowStrikeHQ/credhyg-passwordagechecker`
 
-def is_valid_date_format(date_format):
-  &quot;&quot;&quot;
-  Validates the given date format string.
-  &quot;&quot;&quot;
-  try:
-    datetime.datetime.strptime(&quot;2024-01-01&quot;, date_format)
-    return True
-  except ValueError:
-    return False</code></pre>
-  </section>
-      <section id="files">
-        <h2>The files that matter</h2>
-        <table><tr><th>File</th><th>Lines</th></tr>
-        <tr><td><code>main.py</code></td><td>137</td></tr>
-        <tr><td><code>README.md</code></td><td>17</td></tr>
-        <tr><td><code>requirements.txt</code></td><td>2</td></tr>
-        </table>
-        <p>Names doing the work: <span class="mono">setup_argparse, is_valid_date_format, process_password_file, main</span>.</p>
-      </section>
-      <section id="sheets">
-        <h2>Drawn by hand</h2>
-        <p>I sketch my projects on notebook paper so I have to
-        understand them well enough to draw them. The full set,
-        with the counts and how they were counted, is the
-        <a href="https://github.com/ShadowGuard-AI/credhyg-passwordagechecker/tree/main/credhyg-passwordagechecker-Visuals">credhyg-passwordagechecker-Visuals</a>
-        folder in the repo. Nothing is drawn over the binder holes.
-        That is a rule, not a style.</p>
-        <div class="shots">
-          <img src="assets/architecture.png" alt="Hand drawn architecture sheet for Credhyg Passwordagechecker">
-          <img src="assets/flowchart.png" alt="Hand drawn flowchart sheet for Credhyg Passwordagechecker">
-          <img src="assets/product-map.png" alt="Hand drawn product map sheet for Credhyg Passwordagechecker">
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-<footer>
-  <p>Credhyg Passwordagechecker is one of my projects. This page was written
-  from the repo itself on 2026-10-30: the counts are the
-  repo's counts, the code is the repo's code, and the gaps are the
-  repo's gaps.</p>
-</footer>
-</body>
-</html>
+## Usage
+`./credhyg-passwordagechecker [params]`
+
+## Parameters
+- `-h`: Show help message and exit
+- `--max_age`: No description provided
+- `--date_format`: No description provided
+- `--log_level`: No description provided
+
+## License
+Copyright (c) ShadowStrikeHQ
+</pre>
+<img src="sep-heavy.svg" alt="Themed separator">
+</body></html>
